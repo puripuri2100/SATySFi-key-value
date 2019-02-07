@@ -1,0 +1,26 @@
+@require: list
+
+module KeyVal : sig
+
+val fuga : int -> unit
+val hoge : string -> unit
+
+direct \test : [unit list] inline-cmd
+
+end = struct
+
+let-mutable fuga-ref <- 12
+let-mutable hoge-ref <- `hoge`
+
+let fuga s = fuga-ref <- s
+let hoge n = hoge-ref <- n
+
+let henkan x y = x
+
+let ul-u u-l = List.fold-left (henkan) () u-l
+
+let-inline \test u-l =
+  let () = ul-u u-l in
+  embed-string ((arabic !fuga-ref) ^ !hoge-ref)
+
+end

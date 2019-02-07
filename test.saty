@@ -1,0 +1,11 @@
+@require: stdja
+@import: keyval
+
+document (|
+  title = {key-valueテスト};
+  author = {};
+  show-title = false;
+  show-toc = false;
+|) '<
+  +p{\test[KeyVal.fuga 23; KeyVal.fuga 33; KeyVal.hoge `SATySFi`];}
+>
