@@ -9,18 +9,24 @@ direct \test : [unit list] inline-cmd
 
 end = struct
 
-let-mutable fuga-ref <- 12
-let-mutable hoge-ref <- `hoge`
+let fuga-m = 12
+let hoge-m = `hoge`
+
+let-mutable fuga-ref <- fuga-m
+let-mutable hoge-ref <- hoge-m
 
 let fuga s = fuga-ref <- s
 let hoge n = hoge-ref <- n
 
-let henkan x y = x
+%let henkan x y = x
 
-let ul-u u-l = List.fold-left (henkan) () u-l
+%let ul-u u-l = List.fold-left (henkan) () u-l
 
 let-inline \test u-l =
-  let () = ul-u u-l in
-  embed-string ((arabic !fuga-ref) ^ !hoge-ref)
+%  let () = ul-u u-l in
+  let main = embed-string ((arabic !fuga-ref) ^ !hoge-ref) in
+  let () = fuga-ref <- fuga-m in
+  let () = hoge-ref <- hoge-m in
+    main
 
 end

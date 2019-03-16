@@ -8,4 +8,5 @@ document (|
   show-toc = false;
 |) '<
   +p{\test[KeyVal.fuga 23; KeyVal.fuga 33; KeyVal.hoge `SATySFi`];}
+  +p{\test([]);}
 >
